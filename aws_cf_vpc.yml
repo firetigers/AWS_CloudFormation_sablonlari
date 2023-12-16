@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: AWS CloudFormation'da basit bir VPC oluşturma örneği
+Description: |
+  AWS CloudFormation'da basit bir VPC oluşturma örneği
 
 Resources:
   MyVPC:
