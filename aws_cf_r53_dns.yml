@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Route 53 Alan Adı ve DNS Ayarları
+Description: |
+  Route 53 Alan Adı ve DNS Ayarları
 
 Parameters:
   DomainName:
