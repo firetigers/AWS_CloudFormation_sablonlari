@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 Depolama Alanı ve İzin Yönetimi
+
+Resources:
+  MyS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: my-s3-bucket
+      AccessControl: Private
+      Tags:
+        - Key: Name
+          Value: MyS3Bucket
+
+  MyBucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref MyS3Bucket
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub 'arn:aws:s3:::${MyS3Bucket}/*'
+
+Outputs:
+  S3BucketName:
+    Description: S3 Depolama Alanı Adı
+    Value: !Ref MyS3Bucket
