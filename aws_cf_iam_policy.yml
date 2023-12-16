@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: IAM Rolü ve İzinleri
+
+Resources:
+  MyIAMRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: MyIAMRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: 'sts:AssumeRole'
+
+  MyIAMRolePolicy:
+    Type: 'AWS::IAM::Policy'
+    Properties:
+      PolicyName: MyIAMRolePolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - 's3:GetObject'
+              - 's3:PutObject'
+            Resource: 'arn:aws:s3:::my-s3-bucket/*'  # S3 bucket izinleri
+      Roles:
+        - !Ref MyIAMRole
+
+Outputs:
+  IAMRoleArn:
+    Description: IAM Rolü ARN
+    Value: !GetAtt MyIAMRole.Arn
