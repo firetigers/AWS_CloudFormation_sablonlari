@@ -5,7 +5,7 @@ Resources:
   MyLaunchConfiguration:
     Type: 'AWS::AutoScaling::LaunchConfiguration'
     Properties:
-      ImageId: 'ami-xxxxxxxxxxxxxxxxx'  # Amazon Machine Image (AMI) ID
+      ImageId: 'ami-xxxxxxxxxxxxxxxx'  # Amazon Machine Image (AMI) ID
       InstanceType: 't2.micro'
       KeyName: 'XXX'  # EC2 Key Pair
       UserData:
