@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: S3 Depolama Alanı ve İzin Yönetimi
+Description: |
+  S3 Depolama Alanı ve İzin Yönetimi
 
 Resources:
   MyS3Bucket:
