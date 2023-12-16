@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Lambda Fonksiyonu ve API Gateway Oluştur
+
+Resources:
+  MyLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: MyLambdaFunction
+      Handler: index.handler
+      Role: !GetAtt MyLambdaExecutionRole.Arn
+      FunctionName: MyLambdaFunction
+      Runtime: nodejs14.x
+      Timeout: 30
+      Code:
+        S3Bucket: your-s3-bucket
+        S3Key: your-lambda-code.zip
+
+  MyLambdaExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: 'sts:AssumeRole'
+      Policies:
+        - PolicyName: LambdaExecutionPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 'logs:CreateLogGroup'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                Resource: 'arn:aws:logs:*:*:*'
+
+  MyApiGateway:
+    Type: 'AWS::ApiGateway::RestApi'
+    Properties:
+      Name: MyApi
+
+  MyApiGatewayResource:
+    Type: 'AWS::ApiGateway::Resource'
+    Properties:
+      RestApiId: !Ref MyApiGateway
+      ParentId: !GetAtt MyApiGateway.RootResourceId
+      PathPart: 'myresource'
+
+  MyApiGatewayMethod:
+    Type: 'AWS::ApiGateway::Method'
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: POST
+      ResourceId: !Ref MyApiGatewayResource
+      RestApiId: !Ref MyApiGateway
+      Integration:
+        IntegrationHttpMethod: POST
+        Type: AWS_PROXY
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MyLambdaFunction.Arn}/invocations
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway Endpoint
+    Value: !Sub 'https://${MyApiGateway}.execute-api.${AWS::Region}.amazonaws.com'
