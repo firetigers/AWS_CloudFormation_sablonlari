@@ -1,0 +1,69 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Yük Dengeleyici ve Otomatik Ölçekleme Grubu ile Web Uygulaması
+
+Resources:
+  MyLaunchConfiguration:
+    Type: 'AWS::AutoScaling::LaunchConfiguration'
+    Properties:
+      ImageId: 'ami-xxxxxxxxxxxxxxxxx'  # Amazon Machine Image (AMI) ID
+      InstanceType: 't2.micro'
+      KeyName: 'your-key-pair'  # EC2 Key Pair
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          # Your user data script here
+
+  MyAutoScalingGroup:
+    Type: 'AWS::AutoScaling::AutoScalingGroup'
+    Properties:
+      AvailabilityZones:
+        - 'us-east-1a'
+        - 'us-east-1b'
+      LaunchConfigurationName: !Ref MyLaunchConfiguration
+      MinSize: '2'
+      MaxSize: '5'
+      DesiredCapacity: '2'
+
+  MyLoadBalancer:
+    Type: 'AWS::ElasticLoadBalancing::LoadBalancer'
+    Properties:
+      AvailabilityZones:
+        - 'us-east-1a'
+        - 'us-east-1b'
+      Listeners:
+        - LoadBalancerPort: '80'
+          InstancePort: '80'
+          Protocol: 'HTTP'
+      HealthCheck:
+        Target: 'HTTP:80/'
+        HealthyThreshold: '3'
+        UnhealthyThreshold: '5'
+        Interval: '30'
+        Timeout: '5'
+      Instances: !Ref MyAutoScalingGroup
+
+  MyScalingPolicy:
+    Type: 'AWS::AutoScaling::ScalingPolicy'
+    Properties:
+      AdjustmentType: 'ChangeInCapacity'
+      AutoScalingGroupName: !Ref MyAutoScalingGroup
+      Cooldown: '300'
+      ScalingAdjustment: '1'
+
+  MyCloudWatchAlarm:
+    Type: 'AWS::CloudWatch::Alarm'
+    Properties:
+      AlarmDescription: 'Scale up when CPU exceeds 70%'
+      Namespace: 'AWS/EC2'
+      MetricName: 'CPUUtilization'
+      Dimensions:
+        - Name: 'AutoScalingGroupName'
+          Value: !Ref MyAutoScalingGroup
+      Statistic: 'Average'
+      Period: '300'
+      Threshold: '70'
+      ComparisonOperator: 'GreaterThanThreshold'
+      EvaluationPeriods: '2'
+      AlarmActions:
+        - !Ref MyScalingPolicy
+      Unit: 'Percent'
