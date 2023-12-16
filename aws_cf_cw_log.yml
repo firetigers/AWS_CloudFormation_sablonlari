@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudWatch Alarmları ve Log Grupları
+
+Resources:
+  MyLogGroup:
+    Type: 'AWS::Logs::LogGroup'
+    Properties:
+      LogGroupName: MyLogGroup
+
+  MyCloudWatchAlarm:
+    Type: 'AWS::CloudWatch::Alarm'
+    Properties:
+      AlarmName: MyCloudWatchAlarm
+      ComparisonOperator: GreaterThanThreshold
+      EvaluationPeriods: 1
+      MetricName: 'IncomingLogEvents'
+      Namespace: 'AWS/Logs'
+      Period: 60
+      Statistic: Sum
+      Threshold: 10
+      ActionsEnabled: true
+      AlarmActions:
+        - !Ref MySnsTopic
+      Dimensions:
+        - Name: LogGroupName
+          Value: !Ref MyLogGroup
+      TreatMissingData: notBreaching
+
+  MySnsTopic:
+    Type: 'AWS::SNS::Topic'
+    Properties:
+      DisplayName: 'MySnsTopic'
+
+Outputs:
+  LogGroupName:
+    Description: CloudWatch Log Grubu Adı
+    Value: !Ref MyLogGroup
+  CloudWatchAlarmName:
+    Description: CloudWatch Alarm Adı
+    Value: !Ref MyCloudWatchAlarm
+  SnsTopicArn:
+    Description: SNS Topic ARN
+    Value: !Ref MySnsTopic
