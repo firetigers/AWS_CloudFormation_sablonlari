@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: EC2 Örnekleri İçin Otomatik Ölçekleme Grubu
+Description: |
+  EC2 Örnekleri İçin Otomatik Ölçekleme Grubu
 
 Resources:
   MyLaunchConfiguration:
@@ -7,7 +8,7 @@ Resources:
     Properties:
       ImageId: 'ami-xxxxxxxxxxxxxxxxx'  # Amazon Machine Image (AMI) ID
       InstanceType: 't2.micro'
-      KeyName: 'your-key-pair'  # EC2 Key Pair
+      KeyName: 'XXX'  # EC2 Key Pair
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
