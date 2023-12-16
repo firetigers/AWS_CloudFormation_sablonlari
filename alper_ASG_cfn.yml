@@ -79,7 +79,7 @@ Resources:
   MyALB:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
-      Name: alpercfnelb
+      Name: alpercfnelb # Kendi ALB name yazınız.
       SecurityGroups:
         - !GetAtt MySecGrp.GroupId
       Subnets: !Ref Subnets
