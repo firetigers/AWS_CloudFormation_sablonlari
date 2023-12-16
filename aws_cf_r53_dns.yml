@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Route 53 Alan Adı ve DNS Ayarları
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: "Alan adı"
+    Default: mydomain.com
+
+Resources:
+  MyHostedZone:
+    Type: 'AWS::Route53::HostedZone'
+    Properties:
+      Name: !Ref DomainName
+
+  MyRecordSet:
+    Type: 'AWS::Route53::RecordSet'
+    Properties:
+      HostedZoneId: !Ref MyHostedZone
+      Name: !Ref DomainName
+      Type: A
+      TTL: '300'
+      ResourceRecords:
+        - '1.2.3.4'  # Bu, alan adınızın yönlendirileceği IP adresini temsil eder.
+
+Outputs:
+  HostedZoneId:
+    Description: Route 53 Hosted Zone ID
+    Value: !Ref MyHostedZone
