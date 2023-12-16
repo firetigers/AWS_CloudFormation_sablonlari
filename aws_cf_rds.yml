@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: RDS Veritabanı Oluştur
+
+Parameters:
+  DBName:
+    Type: String
+    Description: Veritabanı adı
+    Default: MyDB
+
+  DBUsername:
+    Type: String
+    Description: Veritabanı kullanıcı adı
+    Default: admin
+
+  DBPassword:
+    Type: String
+    NoEcho: true
+    Description: Veritabanı şifresi
+    Default: Password123
+
+Resources:
+  MyDBInstance:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      Engine: 'mysql'  # RDS veritabanı motoru
+      DBInstanceIdentifier: !Ref 'AWS::StackName'
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      AllocatedStorage: '20'
+      DBInstanceClass: 'db.t2.micro'
+      VPCSecurityGroups:
+        - !Ref MyDBSecurityGroup
+      AvailabilityZone: 'us-east-1a'
+
+  MyDBSecurityGroup:
+    Type: 'AWS::RDS::DBSecurityGroup'
+    Properties:
+      DBSecurityGroupIngress:
+        - EC2SecurityGroupName: 'default'
+          EC2SecurityGroupId: !GetAtt 'MyEC2Instance.SecurityGroups.0.GroupId'
+
+Outputs:
+  EndpointAddress:
+    Description: RDS veritabanı son nokta adresi
+    Value: !GetAtt MyDBInstance.Endpoint.Address
