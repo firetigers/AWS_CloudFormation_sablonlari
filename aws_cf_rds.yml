@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: RDS Veritabanı Oluştur
+Description: |
+  RDS Veritabanı Oluştur
 
 Parameters:
   DBName:
