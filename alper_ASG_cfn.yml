@@ -148,7 +148,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Allow SSH and HTTP # Required
-      GroupName: alpercfnsecgrp
+      GroupName: alpercfnsecgrp # Kendi SecurtyGroupName yazınız.
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
