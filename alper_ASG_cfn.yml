@@ -130,7 +130,7 @@ Resources:
               # start apache server
               systemctl start httpd
               systemctl enable httpd
-      LaunchTemplateName: alpercfnlt
+      LaunchTemplateName: alpercfnlt # Kendi LaunchTemplateName yazınız.
 
   MyTargetGrp:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
