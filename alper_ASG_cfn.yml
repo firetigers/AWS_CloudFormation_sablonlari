@@ -72,7 +72,7 @@ Resources:
       DefaultActions: # Required - Gerekli
         - Type: forward
           TargetGroupArn: !Ref MyTargetGrp
-      LoadBalancerArn: !Ref MyALB  # Required
+      LoadBalancerArn: !Ref MyALB  # Required - Gerekli
       Port: 80
       Protocol: HTTP
   
