@@ -60,7 +60,7 @@ Resources:
       LaunchTemplate: 
         LaunchTemplateId: !Ref MyLaunchTemplate
         Version: 1
-      MaxSize: 3 # Required
+      MaxSize: 3 # Required - Gerekli
       MinSize: 2 # Required
       TargetGroupARNs:
         - !Ref MyTargetGrp
