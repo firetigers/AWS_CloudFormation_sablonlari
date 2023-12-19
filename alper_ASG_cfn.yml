@@ -44,7 +44,7 @@ Resources:
   MyAsgPolicy:
     Type: AWS::AutoScaling::ScalingPolicy
     Properties:
-      AutoScalingGroupName: !Ref MyASG # Required
+      AutoScalingGroupName: !Ref MyASG # Required - Gerekli
       PolicyType: TargetTrackingScaling
       TargetTrackingConfiguration:
         PredefinedMetricSpecification:
