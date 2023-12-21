@@ -29,7 +29,7 @@ Mappings:
   
   RegionImageMap:
     us-east-1:
-      AMI: ami-0b5eea76982371e91 # AMI'lerin güncelliğini AWS'den kontrol ediniz.
+      AMI: ami-079db87dc4c10ac91 # AMI'lerin güncelliğini AWS'den kontrol ediniz.
     us-east-2:
       AMI: ami-0ee4f2271a4df2d7d
     us-west-1:
