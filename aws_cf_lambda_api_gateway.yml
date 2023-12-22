@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Lambda Fonksiyonu ve API Gateway Oluştur
+Description: |
+  Lambda Fonksiyonu ve API Gateway Oluştur
 
 Resources:
   MyLambdaFunction:
