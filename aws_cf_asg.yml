@@ -8,7 +8,7 @@ Resources:
     Properties:
       ImageId: 'ami-xxxxxxxxxxxxxxxx'  # Amazon Machine Image (AMI) ID
       InstanceType: 't2.micro'
-      KeyName: 'XXX'  # EC2 Key Pair Buraya Yazınız
+      KeyName: 'XXXX'  # EC2 Key Pair Buraya Yazınız
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
