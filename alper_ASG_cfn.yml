@@ -33,7 +33,7 @@ Mappings:
     us-east-2:
       AMI: ami-0ee4f2271a4df2d7d # AMI
     us-west-1:
-      AMI: ami-0082110c417e4726e # AM
+      AMI: ami-0082110c417e4726e # AMI
     us-west-2:
       AMI: ami-01450e8988a4e7f44 # AM
     eu-west-1:
