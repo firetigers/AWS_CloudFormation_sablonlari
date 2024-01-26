@@ -35,7 +35,7 @@ Mappings:
     us-west-1:
       AMI: ami-0082110c417e4726e # AMI'leri güncelliğini AWS'den AWI Catalog'dan kont
     us-west-2:
-      AMI: ami-01450e8988a4e7f44 # AMI'leri güncelliğini AWS'den AWI Catalog'dan kon
+      AMI: ami-01450e8988a4e7f44 # AMI'leri güncelliğini AWS'den AWI Catalog'dan kont
     eu-west-1:
       AMI: ami-02cad064a29d4550c # AMI'leri güncelliğini AWS'den AWI Catalog'dan kon
   
