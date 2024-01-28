@@ -31,7 +31,7 @@ Mappings:
     us-east-1:
       AMI: ami-079db87dc4c10ac91 # AMI'lerin güncelliğini AWS'den AMI Catalog'dan kontrol ediniz.
     us-east-2:
-      AMI: ami-0ee4f2271a4df2d7d # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontr
+      AMI: ami-0ee4f2271a4df2d7d # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontro
     us-west-1:
       AMI: ami-0082110c417e4726e # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontr
     us-west-2:
