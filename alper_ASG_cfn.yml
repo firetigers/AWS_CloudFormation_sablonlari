@@ -33,7 +33,7 @@ Mappings:
     us-east-2:
       AMI: ami-0ee4f2271a4df2d7d # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontro
     us-west-1:
-      AMI: ami-0082110c417e4726e # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontr
+      AMI: ami-0082110c417e4726e # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontrO
     us-west-2:
       AMI: ami-01450e8988a4e7f44 # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontr
     eu-west-1:
