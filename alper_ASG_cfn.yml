@@ -37,7 +37,7 @@ Mappings:
     us-west-2:
       AMI: ami-01450e8988a4e7f44 # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontrol 
     eu-west-1:
-      AMI: ami-02cad064a29d4550c # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontrol
+      AMI: ami-02cad064a29d4550c # AMI'leri güncelliğini AWS'den AWI Catalog'dan kontrol 
   
 Resources:
 
