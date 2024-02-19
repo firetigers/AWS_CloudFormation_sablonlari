@@ -1,2 +1,2 @@
 # AWS_CloudFormation_sablonlari
-# AWS Auto Scal
+# AWS Auto Scali
