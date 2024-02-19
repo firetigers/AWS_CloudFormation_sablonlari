@@ -1,2 +1,2 @@
 # AWS_CloudFormation_sablonlari
-# AWS Auto Scaling Gr
+# AWS Auto Scaling Gro
