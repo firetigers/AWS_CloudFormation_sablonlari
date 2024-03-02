@@ -2,4 +2,4 @@
 # AWS Auto Scaling Group
 # AWS Cloud Watch
 # AWS Elastic Compute Cloud
-# AWS Identity and Access Manage
+# AWS Identity and Access Managem
