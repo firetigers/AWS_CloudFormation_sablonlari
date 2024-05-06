@@ -5,4 +5,4 @@
 # AWS Identity and Access Management
 # AWS Lambda
 # AWS Route 53
-# AWS Relational Database Se
+# AWS Relational Database Ser
